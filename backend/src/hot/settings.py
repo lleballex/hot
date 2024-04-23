@@ -22,6 +22,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     'rest_framework',
+
+    'authi',
 ]
 
 MIDDLEWARE = [
@@ -105,3 +107,7 @@ STATIC_URL = 'static/'
 # Default primary key field type
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+# custom user model
+
+AUTH_USER_MODEL = 'authi.User'

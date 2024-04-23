@@ -1,0 +1,82 @@
+@import "@/assets/css/config";
+
+* {
+  margin: 0;
+  padding: 0;
+  min-width: 0;
+  min-height: 0;
+  box-sizing: border-box;
+
+  &::-webkit-scrollbar {
+    height: calc(4px);
+    width: calc(4px);
+  }
+
+  &::-webkit-scrollbar-track {
+    &:horizontal {
+      border-bottom: 2px solid $gray-5;
+    }
+
+    &:vertical {
+      border-right: 2px solid $gray-5;
+    }
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: $gray-1;
+    background-clip: padding-box;
+
+    &:horizontal {
+      border-bottom: 1px solid $gray-5;
+    }
+
+    &:vertical {
+      border-right: 1px solid $gray-5;
+    }
+  }
+}
+
+html {
+  scroll-behavior: smooth !important;
+}
+
+body {
+  @include paragraph-2;
+
+  background: $white;
+  color: $gray-2;
+}
+
+h1 {
+  @include heading-1;
+}
+
+h2 {
+  @include heading-2;
+}
+
+h3 {
+  @include heading-3;
+}
+
+h4 {
+  @include heading-4;
+}
+
+h5 {
+  @include heading-5;
+}
+
+h6 {
+  @include heading-6;
+}
+
+img,
+form {
+  display: block;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}

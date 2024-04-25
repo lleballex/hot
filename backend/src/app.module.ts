@@ -1,6 +1,8 @@
 import { Module } from '@nestjs/common'
 import { TypeOrmModule } from '@nestjs/typeorm'
 import { ConfigModule } from '@nestjs/config'
+import { StarterPack } from '@/starter-packs/entities/starter-pack.entity'
+import { StarterPacksModule } from '@/starter-packs/starter-packs.module'
 
 @Module({
   imports: [
@@ -13,8 +15,10 @@ import { ConfigModule } from '@nestjs/config'
       password: process.env.DB_PASSWORD,
       database: process.env.DB_NAME,
       synchronize: true, // TODO: disable
-      entities: [],
+      entities: [StarterPack],
     }),
+
+    StarterPacksModule,
   ],
 })
 export class AppModule {}

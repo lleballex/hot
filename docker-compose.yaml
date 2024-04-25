@@ -5,14 +5,32 @@ services:
     volumes:
       - frontend_dist:/app/dist
 
+  backend:
+    build: ./backend
+    env_file: ./backend/.env
+    depends_on:
+      db:
+        condition: service_healthy
+    ports:
+      - 127.0.0.1:3000:3000
+
   nginx:
     build: ./nginx
     depends_on:
       - frontend
+      - backend
     volumes:
       - frontend_dist:/frontend_dist
     ports:
       - 80:80
+
+  db:
+    image: postgres:16
+    env_file: ./backend/.env
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 5s
+      timeout: 5s
 
 volumes:
   frontend_dist:

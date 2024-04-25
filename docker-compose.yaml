@@ -1,0 +1,18 @@
+services:
+  frontend:
+    build: ./frontend
+    env_file: ./frontend/.env
+    volumes:
+      - frontend_dist:/app/dist
+
+  nginx:
+    build: ./nginx
+    depends_on:
+      - frontend
+    volumes:
+      - frontend_dist:/frontend_dist
+    ports:
+      - 80:80
+
+volumes:
+  frontend_dist:

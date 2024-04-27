@@ -6,7 +6,7 @@ import { useTgLogin } from "@/api/auth";
 export default function TelegramProvider({ children }: PropsWithChildren) {
   const [telegram, setTelegram] = useState<Telegram | null>(null);
 
-  const { login } = useTgLogin();
+  const tgLogin = useTgLogin();
 
   useEffect(() => {
     if (telegram) return;
@@ -14,7 +14,7 @@ export default function TelegramProvider({ children }: PropsWithChildren) {
     const app: TelegramWebApp | undefined = (window as any).Telegram?.WebApp;
 
     if (app && app.initDataUnsafe.user) {
-      login(
+      tgLogin.mutate(
         {
           initData: app.initData,
         },
@@ -34,7 +34,7 @@ export default function TelegramProvider({ children }: PropsWithChildren) {
         }
       );
     }
-  }, [telegram, login]);
+  }, [telegram]);
 
   if (!telegram) {
     // TODO: show nice error

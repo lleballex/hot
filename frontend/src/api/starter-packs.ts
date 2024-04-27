@@ -1,15 +1,7 @@
-import { useQuery } from "@tanstack/react-query";
-import { ApiEndpoints } from "@/config/api";
-import { axiosClient } from "@/config/axios";
-import { StarterPack } from "@/types/starter-pack";
+import { Api } from "@/config/api";
+import { createUseQuery } from "@/lib/create-use-query";
 
-export const useStarterPacks = () => {
-  const { data, isLoading } = useQuery({
-    queryKey: [ApiEndpoints.starterPacks],
-    queryFn: () =>
-      axiosClient
-        .get<StarterPack[]>(ApiEndpoints.starterPacks)
-        .then((res) => res.data),
-  });
-  return { starterPacks: data, isLoading };
-};
+export const useStarterPacks = createUseQuery(
+  "getStarterPacks",
+  Api.getStarterPacks
+);

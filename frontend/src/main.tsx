@@ -18,11 +18,11 @@ const queryClient = new QueryClient();
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
-    <TelegramProvider>
-      <QueryClientProvider client={queryClient}>
+    <QueryClientProvider client={queryClient}>
+      <TelegramProvider>
         <RouterProvider router={router} />
         <ReactQueryDevtools />
-      </QueryClientProvider>
-    </TelegramProvider>
+      </TelegramProvider>
+    </QueryClientProvider>
   </React.StrictMode>
 );
